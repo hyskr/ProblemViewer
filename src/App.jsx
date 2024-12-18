@@ -34,7 +34,7 @@ function App() {
   }
 
   return (
-    <div className="flex flex-row-reverse h-screen">
+    <div className="flex md:flex-row-reverse flex-col-reverse h-screen">
       <Sidebar
         groupProblems={groupProblems}
         problems={problems}
@@ -42,11 +42,11 @@ function App() {
         onSelect={setCurrentProblemIndex}
       />
 
-      <div className="flex-1 overflow-auto">
-        <div className="flex flex-col min-h-screen pb-10">
+      <div className="flex-grow overflow-auto">
+        <div className="flex flex-col md:min-h-screen h-full pb-10">
           <Header />
           <main className="flex-grow">
-            <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto md:py-6 sm:px-6 lg:px-8">
               <div className="px-4 py-6 sm:px-0">
                 <ErrorBoundary>
                   {problems.length > 0 && (
@@ -64,7 +64,6 @@ function App() {
           />
         </div>
       </div>
-
     </div >
   );
 }

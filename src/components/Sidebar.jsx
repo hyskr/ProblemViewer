@@ -25,7 +25,7 @@ export function Sidebar({ groupProblems, problems, currentIndex, onSelect }) {
 
 
   return (
-    <div className="bg-white shadow-md w-64 h-screen flex flex-col overflow-hidden">
+    <div className="bg-white shadow-md md:w-64 w-full md:h-screen h-48 flex flex-col overflow-hidden">
       <div className="p-4 border-b border-gray-200 flex-shrink-0">
         <h2 className="text-lg font-semibold text-gray-900">题目索引</h2>
       </div>

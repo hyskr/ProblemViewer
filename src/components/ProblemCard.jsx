@@ -25,8 +25,8 @@ export function ProblemCard({ problem }) {
         />
       </div>
 
-      <div className="mt-4 p-4 bg-green-50 rounded-md">
-        <p className="text-green-700 font-medium">正确答案: {problem.answers.join(', ')}</p>
+      <div className="mt-4 p-4 bg-green-50 rounded-md md:block hidden">
+        <p className="text-green-700 font-medium">正确答案:<span dangerouslySetInnerHTML={{ __html: problem.answers }} /></p>
       </div>
     </div>
   );

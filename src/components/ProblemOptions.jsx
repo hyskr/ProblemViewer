@@ -14,8 +14,7 @@ export function ProblemOptions({ options, correctAnswers }) {
               : "bg-gray-50 border border-gray-200"
           )}
         >
-          <span className="font-medium mr-2">{option.key}.</span>
-          <span dangerouslySetInnerHTML={{ __html: option.value }} />
+          <span className="font-medium mr-2">{option.key}.</span><span dangerouslySetInnerHTML={{ __html: option.value }} />
         </div>
       ))}
     </div>
