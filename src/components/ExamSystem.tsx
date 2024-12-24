@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import DOMPurify from 'dompurify';
-import { BarChart3, ChevronLeft, ChevronRight, Send, UserCircle2, Users } from 'lucide-react';
+import { BarChart3, ChevronLeft, ChevronRight, Send, UserCircle2, Users, Menu } from 'lucide-react';
 import { QuestionStats } from './QuestionStats';
 import { SubjectiveAnswers } from './SubjectiveAnswers';
 import {
@@ -51,6 +51,7 @@ export function ExamSystem() {
   const [answers, setAnswers] = useState<Record<string, string[]>>({});
   const [subjectiveAnswers, setSubjectiveAnswers] = useState<{ answer: string; user_id: string }[]>([]);
   const [showAnswersModal, setShowAnswersModal] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(true);
   // const [selectedQuestionId, setSelectedQuestionId] = useState<string>('');
 
   // Add auto-refresh interval for stats
@@ -281,7 +282,15 @@ export function ExamSystem() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="min-h-screen bg-gray-50 flex relative">
+      {/* Mobile menu button */}
+      <button
+        onClick={() => setShowSidebar(!showSidebar)}
+        className="fixed top-4 left-4 z-50 lg:hidden bg-white p-2 rounded-md shadow-md"
+      >
+        <Menu className="w-6 h-6" />
+      </button>
+
       {/* Subjective Answers Modal */}
       {showAnswersModal && (
         <SubjectiveAnswers
@@ -327,7 +336,7 @@ export function ExamSystem() {
       )}
 
       {/* Sidebar */}
-      <div className="w-80 bg-white border-r p-6 space-y-6 flex-shrink-0 fixed h-screen overflow-y-auto">
+      <div className={`${showSidebar ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 w-80 bg-white border-r p-6 space-y-6 flex-shrink-0 fixed h-screen overflow-y-auto transition-transform duration-300 ease-in-out z-40`}>
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-bold">考试系统</h1>
           <button
@@ -396,7 +405,7 @@ export function ExamSystem() {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 p-8 overflow-auto ml-80">
+      <div className={`flex-1 p-8 overflow-auto transition-all duration-300 ease-in-out ${showSidebar ? 'lg:ml-80' : 'ml-0'}`}>
         {selectedSection && questions.length > 0 && (
           <div className="max-w-3xl mx-auto space-y-8">
             {questions.map((question, index) => (
