@@ -51,7 +51,7 @@ export function ExamSystem() {
   const [answers, setAnswers] = useState<Record<string, string[]>>({});
   const [subjectiveAnswers, setSubjectiveAnswers] = useState<{ answer: string; user_id: string }[]>([]);
   const [showAnswersModal, setShowAnswersModal] = useState(false);
-  const [selectedQuestionId, setSelectedQuestionId] = useState<string>('');
+  // const [selectedQuestionId, setSelectedQuestionId] = useState<string>('');
 
   // Add auto-refresh interval for stats
   useEffect(() => {
@@ -198,7 +198,7 @@ export function ExamSystem() {
     }
 
     setSubjectiveAnswers(data || []);
-    setSelectedQuestionId(questionId);
+    // setSelectedQuestionId(questionId);
     setShowAnswersModal(true);
   };
 
