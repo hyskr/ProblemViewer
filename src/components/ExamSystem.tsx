@@ -429,12 +429,12 @@ export function ExamSystem() {
                     </button>
                     <button
                       onClick={() => toggleStats(question.id)}
-                      className="text-gray-500 hover:text-gray-700"
+                      className="text-gray-500 hover:text-gray-700 lg:block hidden"
                       title="查看统计"
                     >
                       <BarChart3 className="w-5 h-5" />
                     </button>
-                    <div className="flex items-center space-x-2">
+                    <div className="items-center space-x-2 lg:flex hidden">
                       <button
                         disabled={index === 0}
                         onClick={() => document.getElementById(`question-${questions[index - 1].id}`)?.scrollIntoView({ behavior: 'smooth' })}
